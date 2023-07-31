@@ -22,12 +22,12 @@ export default {
           },
         },
         customDomain: {
-          domainName: "robavo.net",
           isExternalDomain: true,
+          domainName: "robavo.net",
           cdk: {
             certificate: Certificate.fromCertificateArn(
               stack,
-              "MyCert",
+              "Certificate",
               process.env.AWS_CERTIFICATE_ARN ?? ""
             ),
           },
