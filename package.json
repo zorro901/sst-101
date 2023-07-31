@@ -7,7 +7,8 @@
     "dev": "sst bind next dev",
     "postinstall": "prisma generate",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "sst:start": "pnpm sst dev"
   },
   "dependencies": {
     "@prisma/client": "^5.0.0",

@@ -1,6 +1,6 @@
 import { type SSTConfig } from "sst";
 import { NextjsSite } from "sst/constructs";
-import { Certificate } from "aws-cdk-lib/aws-certificatemanager/lib/certificate";
+import * as acm from "aws-cdk-lib/aws-certificatemanager";
 
 export default {
   config(_input) {
@@ -11,7 +11,7 @@ export default {
   },
   stacks(app) {
     app.stack(function Site({ stack }) {
-      const certificate = Certificate.fromCertificateArn(
+      const certificate = acm.Certificate.fromCertificateArn(
         stack,
         "Certificate",
         process.env.AWS_CERTIFICATE_ARN ?? "",
