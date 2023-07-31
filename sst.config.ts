@@ -1,5 +1,6 @@
 import { type SSTConfig } from "sst";
 import { NextjsSite } from "sst/constructs";
+import { RetentionDays } from "aws-cdk-lib/aws-logs";
 
 export default {
   config(_input) {
@@ -13,6 +14,15 @@ export default {
       const site = new NextjsSite(stack, "site", {
         environment: {
           DATABASE_URL: process.env.DATABASE_URL ?? "",
+        },
+        cdk: {
+          server: {
+            logRetention: RetentionDays.ONE_MONTH,
+          },
+        },
+        customDomain: {
+          domainName: "robavo.net",
+          domainAlias: "www.robavo.net",
         },
       });
 

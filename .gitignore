@@ -16,6 +16,8 @@
 /.next/
 /out/
 next-env.d.ts
+/.open-next/
+/.sst/
 
 # production
 /build
