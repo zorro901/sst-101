@@ -20,7 +20,7 @@ export default {
       // Create site
       const site = new NextjsSite(stack, "Site", {
         environment: {
-          DATABASE_URL: process.env.DATABASE_URL ?? "",
+          DATABASE_URL: process.env.DATABASE_URL!,
         },
         customDomain: {
           domainName: "robavo.net",
