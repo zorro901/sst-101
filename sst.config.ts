@@ -1,6 +1,7 @@
 import { type SSTConfig } from "sst";
 import { NextjsSite } from "sst/constructs";
 import { RetentionDays } from "aws-cdk-lib/aws-logs";
+import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
 
 export default {
   config(_input) {
@@ -22,7 +23,14 @@ export default {
         },
         customDomain: {
           domainName: "robavo.net",
-          domainAlias: "www.robavo.net",
+          isExternalDomain: true,
+          cdk: {
+            certificate: Certificate.fromCertificateArn(
+              stack,
+              "MyCert",
+              process.env.AWS_CERTIFICATE_ARN ?? ""
+            ),
+          },
         },
       });
 
