@@ -14,7 +14,7 @@ export default {
       const certificate = acm.Certificate.fromCertificateArn(
         stack,
         "Certificate",
-        process.env.AWS_CERTIFICATE_ARN ?? "",
+        process.env.AWS_CERTIFICATE_ARN ?? ""
       );
       const site = new NextjsSite(stack, "site", {
         environment: {
@@ -28,6 +28,9 @@ export default {
             certificate,
           },
         },
+        edge: true,
+        timeout: "5 seconds",
+        memorySize: "2048 MB",
       });
 
       stack.addOutputs({
